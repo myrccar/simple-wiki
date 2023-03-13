@@ -1,0 +1,9 @@
+LICENSE.txt
+README.md
+setup.py
+simplewiki/__init__.py
+simplewiki/wiki.py
+simplewiki.egg-info/PKG-INFO
+simplewiki.egg-info/SOURCES.txt
+simplewiki.egg-info/dependency_links.txt
+simplewiki.egg-info/top_level.txt

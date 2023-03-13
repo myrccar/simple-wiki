@@ -11,12 +11,12 @@ setuptools.setup(
     description="a package to simplify the wikipedia api",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="<<< URL TO DOC WEBSITE OR GIT PROJECT >>>",
+    url="https://github.com/myrccar/simple-wiki",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.0',
+    python_requires='>=3.10.0',
 )
