@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="simplewiki",
-    version="1.0.0",
+    version="1.0.4",
     author="sami joseph",
     author_email="4myrccar@gmail.com",
     description="a package to simplify the wikipedia api",

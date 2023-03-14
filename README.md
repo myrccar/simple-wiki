@@ -1,1 +1,50 @@
-# simple wiki
+# simple wiki WIP
+
+a simple warper for the wikipedia api 
+
+## how to use
+
+### install
+
+```pip install simplewiki```
+
+### quick start
+
+start by setting up 
+```
+import simplewiki
+
+wiki = simplewiki.wikipedia()
+```
+then you can get some search results
+```
+wiki.search("cats",5)
+```
+this will return a list of results and page ids:
+```
+[('Bengal cat', '63064'), ('Cat', '6678'), ('Cats, Cats, Cats!', '68799268'), ('Cats (musical)', '215013'), ('Tabby cat', '6412655')]
+```
+you can take one of the page ids a summarize it
+```
+wiki.summary(6678)
+```
+this will return a tuple with the title and summary 
+```
+('Cat', 'The cat (Felis catus) is a domestic species of small carnivorous mammal. It is the only domesticated species in the-')
+```
+but what if we just want to get the page?
+```
+wiki.html(6678)
+```
+this will return the raw html as a string:
+```
+...link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1038841319"/><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r10...
+```
+congrats you now have the wikipedia api at you fingertips
+
+## commands
+
+* wiki.search(keyword:str,limit:int) > results:list[tuple]
+* wiki.summarize(page_id:int) > summary:str
+* wiki.html(page_id:int) > html:str
+* wiki.get_url(page_id:int) > url:str

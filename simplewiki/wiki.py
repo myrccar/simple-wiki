@@ -5,14 +5,16 @@ class wikipedia:
     def __init__(self):
         pass
 
-    def search(self,keyword):
+    def search(self,keyword:int,limit:int):
         """
-        input: a string with the keyword
+        input: a string with the keyword and the number of results
         output: a list with tuples containing title & page id or None
         summary: return the results for a wikipedia search
         """
+
         self.keyword = keyword
-        self.url = f"https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=5&gsrsearch='{self.keyword}'"
+        self.limit = limit
+        self.url = f"https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit={self.limit}&gsrsearch='{self.keyword}'"
         self.json = requests.get(self.url).json()
         try:
             self.json['query']['pages']
@@ -24,14 +26,14 @@ class wikipedia:
 
         return self.outlist
 
-    def summary(self,page_id):
+    def summary(self,page_id:int):
         """
         input: a int with the page id
         output: a string with the page summary or None
         """
 
         self.page_id = page_id
-        self.url = f"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&pageids={int(page_id)}"
+        self.url = f"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&pageids={int(self.page_id)}"
         self.json = requests.get(self.url).json()
         self.json['query']['pages']
         try:
@@ -60,7 +62,36 @@ class wikipedia:
         
         return self.json['query']['pages'][str(self.page_id)]['original']['source']
         
+    def html(self,page_id:int):
+        """
+        input: a wikipedia page id
+        output: a html string for the page
+        summary: returns the raw html for a page
+        """
+        self.page_id = page_id
+        self.url = f"https://en.wikipedia.org/?curid={self.page_id}"
+        self.response = requests.get(self.url)
+        print(self.response)
+        if str(self.response) != "<Response [200]>":
+            print("error: invalid response")
+            return None
+    
+        return self.response.text
+    
+    def get_url(self,page_id:int):
+        """
+        input: a page id
+        output: a string with the url
+        summary: get the url for a page by id
+        """
 
+        self.page_id = page_id
+        self.url = f"https://en.wikipedia.org/w/index.php?curid={int(page_id)}"
+
+        return self.url
 
 if __name__ == "__main__":
-    wiki = wikipedia()    
+    wiki = wikipedia()
+    print(wiki.search("cats",5))
+    print(wiki.summary(6678))   
+    print(wiki.get_url(6678))
