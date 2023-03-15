@@ -3,7 +3,7 @@ import json
 
 class wikipedia:
     def __init__(self):
-        pass
+        self.image_file_types = [".jpg",".jpeg",".png",".svg",".JPG",".JPEG",]
 
     def search(self,keyword:int,limit:int):
         """
@@ -69,13 +69,7 @@ class wikipedia:
         summary: returns the raw html for a page
         """
         self.page_id = page_id
-        self.url = f"https://en.wikipedia.org/?curid={self.page_id}"
-        self.response = requests.get(self.url)
-        print(self.response)
-        if str(self.response) != "<Response [200]>":
-            print("error: invalid response")
-            return None
-    
+        
         return self.response.text
     
     def get_url(self,page_id:int):

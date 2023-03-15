@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: simplewiki
-Version: 1.0.4
+Version: 1.0.5
 Summary: a package to simplify the wikipedia api
 Home-page: https://github.com/myrccar/simple-wiki
 Author: sami joseph
@@ -52,7 +52,7 @@ wiki.html(6678)
 ```
 this will return the raw html as a string:
 ```
-link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1038841319"/><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r10...
+...link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1038841319"/><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r10...
 ```
 congrats you now have the wikipedia api at you fingertips
 
@@ -61,3 +61,4 @@ congrats you now have the wikipedia api at you fingertips
 * wiki.search(keyword:str,limit:int) > results:list[tuple]
 * wiki.summarize(page_id:int) > summary:str
 * wiki.html(page_id:int) > html:str
+* wiki.get_url(page_id:int) > url:str
